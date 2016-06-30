@@ -3,7 +3,6 @@ package battleship;
 public class EmptySea extends Ship{
 
 	public EmptySea() {
-		// TODO Auto-generated constructor stub
 		super();
 		this.length = 1;
 		this.hit[0] = false;

@@ -23,7 +23,6 @@ public class BattleshipGame {
 
 	/**
 	 * prints the game menu and info
-	 * @param select
 	 */
 	public void print(int select){
 		String info;
@@ -51,11 +50,9 @@ public class BattleshipGame {
 
 	/**
 	 * check if the input is valid
-	 * @param input
-	 * @return boolean
 	 */
 	public boolean checkValidInput(String input){
-		ArrayList<String> numList = new ArrayList<String>();
+		ArrayList<String> numList = new ArrayList<>();
 		for (int i=0;i<10;i++){
 			numList.add(""+i);
 		}
@@ -66,7 +63,7 @@ public class BattleshipGame {
 		}
 		//returns false if any of the strings is not a single digit number
 		for (String str: coordinates){
-			if (numList.contains(str)==false){
+			if (!numList.contains(str)){
 				return false;
 			}
 		}		
@@ -75,7 +72,6 @@ public class BattleshipGame {
 	
 	/**
 	 * get the coordinates to shoot at from the String input
-	 * @param input
 	 * @return int[] coordinates
 	 */
 	public int[] getCoordinates(String input){
@@ -127,7 +123,6 @@ public class BattleshipGame {
 
 	/**
 	 * main method for the battleship game
-	 * @param args
 	 */
 	public static void main(String[] args) {
 		

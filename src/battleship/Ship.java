@@ -11,7 +11,6 @@ public abstract class Ship {
 	protected boolean[] hit = new boolean[4];
 
 	public Ship() {
-		// TODO Auto-generated constructor stub
 		super();
 	}
 
@@ -25,7 +24,6 @@ public abstract class Ship {
 
 	/**
 	 * Sets the value of bowRow
-	 * @param bowRow
 	 */
 	public void setBowRow(int bowRow) {
 		this.bowRow = bowRow;
@@ -41,7 +39,6 @@ public abstract class Ship {
 
 	/**
 	 * sets the value of bowColumn
-	 * @param bowColumn
 	 */
 	public void setBowColumn(int bowColumn) {
 		this.bowColumn = bowColumn;
@@ -65,7 +62,6 @@ public abstract class Ship {
 
 	/**
 	 * sets the value of instance variable horizontal
-	 * @param horizontal
 	 */
 	public void setHorizontal(boolean horizontal) {
 		this.horizontal = horizontal;
@@ -77,10 +73,6 @@ public abstract class Ship {
 	/**
 	 * returns true if it is okay to put a ship of certain length with its bow in this location, with the given orientation
 	 * returns false otherwise
-	 * @param row
-	 * @param column
-	 * @param horizontal
-	 * @param ocean
 	 * @return okToPlaceShipAt as boolean
 	 */
 	public boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean){
@@ -103,10 +95,6 @@ public abstract class Ship {
 
 	/**
 	 * puts the ship on a certain spot in the ocean
-	 * @param row
-	 * @param column
-	 * @param horizontal
-	 * @param ocean
 	 */
 	public void placeShipAt(int row, int column, boolean horizontal, Ocean ocean){
 		this.setHorizontal(horizontal);
@@ -128,8 +116,6 @@ public abstract class Ship {
 	/**
 	 * returns true if the ship is hit and not sunk. marks that part of the ship as "hit"
 	 * returns false otherwise
-	 * @param row
-	 * @param column
 	 * @return shootAt as boolean
 	 */
 	public boolean shootAt(int row, int column){

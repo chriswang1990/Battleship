@@ -10,7 +10,6 @@ public class Ocean {
 	private int shotsFired;
 	private int hitCount;
 	private int shipsSunk;
-	Random random = new Random();
 	private boolean[][] shadow;
 	private Ship battleship;
 	private Ship cruiser1, cruiser2;
@@ -22,7 +21,6 @@ public class Ocean {
 	 * constructor for ocean class
 	 */
 	public Ocean() {
-		// TODO Auto-generated constructor stub
 		//create the ships objects
 		battleship = new Battleship();
 		cruiser1 = new Cruiser();
@@ -36,7 +34,7 @@ public class Ocean {
 		submarine4 = new Submarine();
 
 		//put all the ships in a array list for further reference
-		allShips = new ArrayList<Ship>();
+		allShips = new ArrayList<>();
 		allShips.add(battleship);
 		allShips.add(cruiser1);
 		allShips.add(cruiser2);
@@ -80,24 +78,13 @@ public class Ocean {
 			row = (int) (Math.random() * 10);
 			column = (int) (Math.random() * 10);
 			trueOrFalse = (int) (Math.random() * 2);
-			boolean horizontal = false;
-			if (trueOrFalse == 1) {
-				horizontal = true;
-			}
-			else {
-				horizontal = false;
-			}
+			boolean horizontal = (trueOrFalse == 1);
 
 			while (!ship.okToPlaceShipAt(row, column, horizontal, this)) {
 				row = (int) (Math.random() * 10);
 				column = (int) (Math.random() * 10);
 				trueOrFalse = (int) (Math.random() * 2);
-				if (trueOrFalse == 1) {
-					horizontal = true;
-				}
-				else {
-					horizontal = false;
-				}
+				horizontal = (trueOrFalse == 1);
 			}
 			ship.placeShipAt(row, column, horizontal, this);
 
@@ -106,24 +93,15 @@ public class Ocean {
 
 	/**
 	 * Returns true if the given location contains a ship, false if it does not.
-	 * @param row
-	 * @param column
-	 * @return
 	 */
 	public boolean isOccupied(int row, int column) {
-		if (this.ships [row][column].getShipType().equals("empty")) {
-			return false;
-		}
-		return true;
+		return !this.ships [row][column].getShipType().equals("empty");
 	}
 
 	/**
 	 * Returns true if the given location contains a "real" ship, still afloat, false if it does not.
 	 * updates the number of shots that have been fired, the number of hits, and the number of sunk ship.
 	 * update the hit array of ship
-	 * @param row
-	 * @param column
-	 * @return
 	 */
 	public boolean shootAt(int row, int column) {
 		int hit = 0;
@@ -143,15 +121,11 @@ public class Ocean {
 			}
 		}
 		this.shipsSunk = sunkNum;
-		if (hit == 1) {
-			return true;
-		}
-		return false;
+		return hit == 1;
 	}
 
 	/**
 	 * Returns the number of shots red (in this game).
-	 * @return
 	 */
 	public int getShotsFired() {
 		return this.shotsFired;
@@ -159,7 +133,6 @@ public class Ocean {
 	
 	/**
 	 * Returns the number of hits recorded (in this game).
-	 * @return
 	 */
 	public int getHitCount() {
 		return this.hitCount;
@@ -167,7 +140,6 @@ public class Ocean {
 
 	/**
 	 * Returns the number of ships sunk (in this game).
-	 * @return
 	 */
 	public int getShipsSunk() {
 		return this.shipsSunk;
@@ -175,7 +147,6 @@ public class Ocean {
 
 	/**
 	 * Returns true if all ships have been sunk, otherwise false.
-	 * @return
 	 */
 	public boolean isGameOver() {
 		
@@ -188,7 +159,6 @@ public class Ocean {
 
 	/**
 	 * Returns the 10x10 array of ships.
-	 * @return
 	 */
 	public Ship[][] getShipArray() {
 		return this.ships;
@@ -231,7 +201,6 @@ public class Ocean {
 	////////////////////////////////////////////////additional helper functions//////////////////////////
 	/**
 	 * return the shadow array (boolean[10][10] for okToPlaceAt method
-	 * @return
 	 */
 	public boolean[][] getShadow() {
 		return this.shadow;
@@ -258,9 +227,6 @@ public class Ocean {
 
 	/**
 	 * setter for ship class to place ship in the ocean
-	 * @param row
-	 * @param column
-	 * @param ship
 	 */
 	public void placeShip(int row, int column, Ship ship) {
 		this.ships[row][column] = ship;
@@ -270,7 +236,6 @@ public class Ocean {
 
 	/**
 	 * all ships list getter for testing
-	 * @return
 	 */
 	public ArrayList<Ship> getAllShips() {
 		return this.allShips;
@@ -278,9 +243,6 @@ public class Ocean {
 	
 	/**
 	 * returns true if the location has been hit, otherwise returns false
-	 * @param row
-	 * @param column
-	 * @return
 	 */
 	public boolean isHit(int row, int column) {
 		Ship ship = this.ships[row][column];
@@ -291,16 +253,10 @@ public class Ocean {
 			return (ship.getHitArray()[0]);
 		}
 		else if (ship.isHorizontal()) {
-			if (ship.getHitArray()[column - bowColumn]) {
-				return true;
-			}
-			return false;
+			return ship.getHitArray()[column - bowColumn];
 		}
 		else {
-			if (ship.getHitArray()[row - bowRow]) {
-				return true;
-			}
-			return false;
+			return ship.getHitArray()[row - bowRow];
 		}
 	}
 
