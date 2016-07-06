@@ -8,7 +8,7 @@ public abstract class Ship {
     private int bowColumn;
     protected int length;
     private boolean horizontal;
-    protected boolean[] hit = new boolean[4];
+    protected boolean[] hit = new boolean[5];
 
     public Ship() {
         super();
@@ -84,7 +84,7 @@ public abstract class Ship {
         boolean okToPlace = true;
         boolean[][] shadows = ocean.getShadow();
         if (horizontal) {
-            for (int i = 0; i < this.getLength(); i++) {
+            for (int i = 0; i < getLength(); i++) {
                 if (column + i > 9) {
                     okToPlace = false;
                 } else if (shadows[row][column + i]) {
@@ -92,7 +92,7 @@ public abstract class Ship {
                 }
             }
         } else {
-            for (int i = 0; i < this.getLength(); i++) {
+            for (int i = 0; i < getLength(); i++) {
                 if (row + i > 9) {
                     okToPlace = false;
                 } else if (shadows[row + i][column]) {
@@ -107,15 +107,15 @@ public abstract class Ship {
      * puts the ship on a certain spot in the ocean
      */
     public void placeShipAt(int row, int column, boolean horizontal, Ocean ocean) {
-        this.setHorizontal(horizontal);
-        this.setBowRow(row);
-        this.setBowColumn(column);
-        if (!this.isHorizontal()) {
-            for (int i = 0; i < this.getLength(); i++) {
+        setHorizontal(horizontal);
+        setBowRow(row);
+        setBowColumn(column);
+        if (!isHorizontal()) {
+            for (int i = 0; i < getLength(); i++) {
                 ocean.placeShip(row + i, column, this);
             }
         } else {
-            for (int i = 0; i < this.getLength(); i++) {
+            for (int i = 0; i < getLength(); i++) {
                 ocean.placeShip(row, column + i, this);
             }
         }
@@ -130,19 +130,19 @@ public abstract class Ship {
      */
     public boolean shootAt(int row, int column) {
 
-        if (!this.getShipType().equals("empty") && !this.isSunk()) {
+        if (!getShipType().equals("empty") && !isSunk()) {
 
-            if (this.isHorizontal()) {
-                for (int i = 0; i < this.getLength(); i++) {
-                    if ((this.getBowRow() == row) && (this.getBowColumn() + i == column)) {
-                        this.hit[i] = true;
+            if (isHorizontal()) {
+                for (int i = 0; i < getLength(); i++) {
+                    if ((getBowRow() == row) && (getBowColumn() + i == column)) {
+                        hit[i] = true;
                         return true;
                     }
                 }
             } else {
-                for (int i = 0; i < this.getLength(); i++) {
-                    if ((this.getBowRow() + i == row) && (this.getBowColumn() == column)) {
-                        this.hit[i] = true;
+                for (int i = 0; i < getLength(); i++) {
+                    if ((getBowRow() + i == row) && (getBowColumn() == column)) {
+                        hit[i] = true;
                         return true;
                     }
                 }
@@ -158,7 +158,7 @@ public abstract class Ship {
      * @return this.hit
      */
     public boolean[] getHitArray() {
-        return this.hit;
+        return hit;
     }
 
     /**
@@ -168,8 +168,8 @@ public abstract class Ship {
      */
     public boolean isSunk() {
         boolean isSunk = true;
-        for (int i = 0; i < this.getLength(); i++) {
-            isSunk = isSunk && this.hit[i];
+        for (int i = 0; i < getLength(); i++) {
+            isSunk = isSunk && hit[i];
         }
         return isSunk;
     }
@@ -180,10 +180,10 @@ public abstract class Ship {
      */
     @Override
     public String toString() {
-        if (this.isSunk()) {
+        if (isSunk()) {
             return "x";
         }
-        return "S";
+        return "!";
     }
 
 

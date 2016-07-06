@@ -7,9 +7,9 @@ public class Battleship extends Ship {
      */
     public Battleship() {
         super();
-        this.length = 4;
+        length = 4;
         for (int i = 0; i < 4; i++) {
-            this.hit[i] = false;
+            hit[i] = false;
         }
     }
 

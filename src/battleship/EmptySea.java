@@ -4,13 +4,13 @@ public class EmptySea extends Ship {
 
     public EmptySea() {
         super();
-        this.length = 1;
-        this.hit[0] = false;
+        length = 1;
+        hit[0] = false;
     }
 
     @Override
     public boolean shootAt(int row, int column) {
-        this.hit[0] = true;
+        hit[0] = true;
         return false;
     }
 

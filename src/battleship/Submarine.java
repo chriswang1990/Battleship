@@ -6,8 +6,8 @@ public class Submarine extends Ship {
      * constructor for subclass Submarine
      */
     public Submarine() {
-        this.length = 1;
-        this.hit[0] = false;
+        length = 1;
+        hit[0] = false;
     }
 
     /**

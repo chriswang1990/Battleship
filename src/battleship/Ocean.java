@@ -43,18 +43,17 @@ public class Ocean {
         //fill ship array with empty sea
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                this.ships[i][j] = new EmptySea();
-                this.ships[i][j].setBowRow(i);
-                this.ships[i][j].setBowColumn(j);
-                this.ships[i][j].setHorizontal(true);
-                this.shadow[i][j] = false;
+                ships[i][j] = new EmptySea();
+                ships[i][j].setBowRow(i);
+                ships[i][j].setBowColumn(j);
+                ships[i][j].setHorizontal(true);
+                shadow[i][j] = false;
             }
         }
         //initialize the count number
-        this.shotsFired = 0;
-        this.hitCount = 0;
-        this.shipsSunk = 0;
-
+        shotsFired = 0;
+        hitCount = 0;
+        shipsSunk = 0;
     }
 
     /**
@@ -77,7 +76,6 @@ public class Ocean {
                 horizontal = (trueOrFalse == 1);
             }
             ship.placeShipAt(row, column, horizontal, this);
-
         }
     }
 
@@ -85,7 +83,7 @@ public class Ocean {
      * Returns true if the given location contains a ship, false if it does not.
      */
     public boolean isOccupied(int row, int column) {
-        return !this.ships[row][column].getShipType().equals("empty");
+        return !ships[row][column].getShipType().equals("empty");
     }
 
     /**
@@ -98,19 +96,19 @@ public class Ocean {
         int sunkNum = 0;
         //update the hit num and hot fired
         if (isOccupied(row, column) && !ships[row][column].isSunk()) {
-            this.hitCount += 1;
+            hitCount += 1;
             hit = 1;
         }
-        this.shotsFired += 1;
+        shotsFired += 1;
         //update the hit array of the ship
-        this.ships[row][column].shootAt(row, column);
+        ships[row][column].shootAt(row, column);
         //update the sunk number
-        for (Ship ship : this.allShips) {
+        for (Ship ship : allShips) {
             if (ship.isSunk()) {
                 sunkNum += 1;
             }
         }
-        this.shipsSunk = sunkNum;
+        shipsSunk = sunkNum;
         return hit == 1;
     }
 
@@ -118,40 +116,35 @@ public class Ocean {
      * Returns the number of shots red (in this game).
      */
     public int getShotsFired() {
-        return this.shotsFired;
+        return shotsFired;
     }
 
     /**
      * Returns the number of hits recorded (in this game).
      */
     public int getHitCount() {
-        return this.hitCount;
+        return hitCount;
     }
 
     /**
      * Returns the number of ships sunk (in this game).
      */
     public int getShipsSunk() {
-        return this.shipsSunk;
+        return shipsSunk;
     }
 
     /**
      * Returns true if all ships have been sunk, otherwise false.
      */
     public boolean isGameOver() {
-
-        boolean gameOver = true;
-        for (Ship ship : this.allShips) {
-            gameOver = gameOver && ship.isSunk();
-        }
-        return gameOver;
+        return (shipsSunk == allShips.size());
     }
 
     /**
      * Returns the 10x10 array of ships.
      */
     public Ship[][] getShipArray() {
-        return this.ships;
+        return ships;
     }
 
     /**
@@ -173,7 +166,7 @@ public class Ocean {
                     }
                 } else if (j == -1) {
                     s += i + "  ";
-                } else if (!this.isHit(i, j)) {
+                } else if (!isHit(i, j)) {
                     s += "." + "  ";
                 } else {
                     s += ships[i][j].toString() + "  ";
@@ -191,7 +184,7 @@ public class Ocean {
      * return the shadow array (boolean[10][10] for okToPlaceAt method
      */
     public boolean[][] getShadow() {
-        return this.shadow;
+        return shadow;
     }
 
     /**
@@ -200,7 +193,7 @@ public class Ocean {
     public void setShadow() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (this.isOccupied(i, j)) {
+                if (isOccupied(i, j)) {
                     for (int k = -1; k < 2; k++) {
                         for (int l = -1; l < 2; l++) {
                             if ((i + k >= 0) && (i + k <= 9) && (j + l >= 0) && (j + l <= 9)) {
@@ -217,23 +210,23 @@ public class Ocean {
      * setter for ship class to place ship in the ocean
      */
     public void placeShip(int row, int column, Ship ship) {
-        this.ships[row][column] = ship;
+        ships[row][column] = ship;
         //update the shadow(places which don't allow ship to be placed)
-        this.setShadow();
+        setShadow();
     }
 
     /**
      * all ships list getter for testing
      */
     public ArrayList<Ship> getAllShips() {
-        return this.allShips;
+        return allShips;
     }
 
     /**
      * returns true if the location has been hit, otherwise returns false
      */
     public boolean isHit(int row, int column) {
-        Ship ship = this.ships[row][column];
+        Ship ship = ships[row][column];
         int bowRow = ship.getBowRow();
         int bowColumn = ship.getBowColumn();
 
@@ -245,6 +238,5 @@ public class Ocean {
             return ship.getHitArray()[row - bowRow];
         }
     }
-
 }
 

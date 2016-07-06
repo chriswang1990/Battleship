@@ -141,12 +141,12 @@ public class OceanTest {
      */
     @Test
     public void testGetShipArray() {
-        assertFalse(this.ocean1.getShipArray()[1][3].getShipType().equals("battleship"));
-        assertFalse(this.ocean1.getShipArray()[1][5].getShipType().equals("battleship"));
+        assertFalse(ocean1.getShipArray()[1][3].getShipType().equals("battleship"));
+        assertFalse(ocean1.getShipArray()[1][5].getShipType().equals("battleship"));
 
-        assertTrue(this.ocean.getShipArray()[1][3].getShipType().equals("battleship"));
-        assertTrue(this.ocean.getShipArray()[1][5].getShipType().equals("battleship"));
-        assertFalse(this.ocean.getShipArray()[2][5].getShipType().equals("battleship"));
+        assertTrue(ocean.getShipArray()[1][3].getShipType().equals("battleship"));
+        assertTrue(ocean.getShipArray()[1][5].getShipType().equals("battleship"));
+        assertFalse(ocean.getShipArray()[2][5].getShipType().equals("battleship"));
     }
 
     /**

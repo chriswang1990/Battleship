@@ -22,11 +22,11 @@ public class ShipTest {
      */
     @Before
     public void setUp() throws Exception {
-        this.battleship = new Battleship();
-        this.cruiser = new Cruiser();
-        this.destroyer = new Destroyer();
-        this.submarine = new Submarine();
-        this.ocean = new Ocean();
+        battleship = new Battleship();
+        cruiser = new Cruiser();
+        destroyer = new Destroyer();
+        submarine = new Submarine();
+        ocean = new Ocean();
         emptySea = new EmptySea();
     }
 

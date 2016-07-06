@@ -5,9 +5,9 @@ public class Carrier extends Ship{
      * constructor for subclass Carrier
      */
     public Carrier() {
-        this.length = 5;
+        length = 5;
         for (int i = 0; i < 5; i++) {
-            this.hit[i] = false;
+            hit[i] = false;
         }
     }
 

@@ -7,9 +7,9 @@ public class Cruiser extends Ship {
      */
     public Cruiser() {
         super();
-        this.length = 3;
+        length = 3;
         for (int i = 0; i < 3; i++) {
-            this.hit[i] = false;
+            hit[i] = false;
         }
     }
 

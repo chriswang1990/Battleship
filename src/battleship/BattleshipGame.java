@@ -34,7 +34,7 @@ public class BattleshipGame {
                 info = "Enter coordinates to fire, e.g. '0 9': ";
                 break;
             case 3:
-                info = "fired at coordinates: (" + this.coordinates[0] + ", " + this.coordinates[1] + ")\n" + "Shots fired: "
+                info = "fired at coordinates: (" + coordinates[0] + ", " + coordinates[1] + ")\n" + "Shots fired: "
                       + ocean.getShotsFired() + ", Shots hit: " + ocean.getHitCount() + ", Ships sunk: " + ocean.getShipsSunk();
                 break;
             case 4:
