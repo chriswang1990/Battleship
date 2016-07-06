@@ -18,16 +18,13 @@ public class Ocean {
      */
     public Ocean() {
         //create the ships objects
+        Ship carrier = new Carrier();
         Ship battleship = new Battleship();
         Ship cruiser1 = new Cruiser();
         Ship cruiser2 = new Cruiser();
         Ship destroyer1 = new Destroyer();
         Ship destroyer2 = new Destroyer();
         Ship destroyer3 = new Destroyer();
-        Ship submarine1 = new Submarine();
-        Ship submarine2 = new Submarine();
-        Ship submarine3 = new Submarine();
-        Ship submarine4 = new Submarine();
 
         //put all the ships in a array list for further reference
         allShips = new ArrayList<>();
@@ -37,10 +34,7 @@ public class Ocean {
         allShips.add(destroyer1);
         allShips.add(destroyer2);
         allShips.add(destroyer3);
-        allShips.add(submarine1);
-        allShips.add(submarine2);
-        allShips.add(submarine3);
-        allShips.add(submarine4);
+        allShips.add(carrier);
 
         //initialize the ship array and shadow array
         ships = new Ship[10][10];
